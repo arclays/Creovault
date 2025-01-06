@@ -46,55 +46,53 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="flex justify-between py-6 px-8 lg:px-20 bg-transparent items-center relative">
-      {/* Logo */}
-      <Link to="/" className="text-4xl text-rose-700 font-bold">
-        Logo
-      </Link>
-
-      {/* Menu Toggle for Small Screens */}
-      <div className="md:hidden">
-        {menuOpen ? (
-          <CiMenuFries
-            onClick={handleMenuToggle}
-            className="CiMenuBurger text-3xl cursor-pointer"
+    <div className="sticky top-0 z-50 bg-transparent backdrop-blur-xl">
+      <div className="flex justify-between py-6 px-8 lg:px-20 bg-transparent items-center relative shadow ">
+        {/* Logo */}
+        <Link to="/" className="text-4xl text-rose-700 font-bold">
+          Logo
+        </Link>
+        {/* Menu Toggle for Small Screens */}
+        <div className="md:hidden">
+          {menuOpen ? (
+            <CiMenuFries
+              onClick={handleMenuToggle}
+              className="CiMenuBurger text-3xl cursor-pointer"
+            />
+          ) : (
+            <CiMenuBurger
+              onClick={handleMenuToggle}
+              className="CiMenuBurger text-3xl cursor-pointer"
+            />
+          )}
+        </div>
+        {/* Navigation Links for Larger Screens */}
+        <div className="hidden md:flex space-x-10">
+          <NavLinks />
+        </div>
+        {/* Search Bar */}
+        <div className="hidden md:block">
+          <SearchBar
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            handleSearchToggle={handleSearchToggle}
           />
-        ) : (
-          <CiMenuBurger
-            onClick={handleMenuToggle}
-            className="CiMenuBurger text-3xl cursor-pointer"
+        </div>
+        {/* Mobile Menu */}
+        <div
+          ref={menuRef}
+          className={`${
+            menuOpen ? "translate-x-0" : "-translate-x-full"
+          } md:hidden flex flex-col absolute top-0 left-0 w-4/5 bg-neutral-900 text-white py-6 p-2 space-y-6 transition-transform duration-500 ease-in-out z-50`}
+        >
+          <NavLinks closeMenu={closeMenu} />
+          {/* Search input in mobile view */}
+          <SearchBar
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            handleSearchToggle={handleSearchToggle}
           />
-        )}
-      </div>
-
-      {/* Navigation Links for Larger Screens */}
-      <div className="hidden md:flex space-x-10">
-        <NavLinks />
-      </div>
-
-      {/* Search Bar */}
-      <div className="hidden md:block">
-        <SearchBar
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          handleSearchToggle={handleSearchToggle}
-        />
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        ref={menuRef}
-        className={`${
-          menuOpen ? "translate-x-0" : "-translate-x-full"
-        } md:hidden flex flex-col absolute top-0 left-0 w-4/5 bg-neutral-900 text-white py-6 p-2 space-y-6 transition-transform duration-500 ease-in-out z-50`}
-      >
-        <NavLinks closeMenu={closeMenu} />
-        {/* Search input in mobile view */}
-        <SearchBar
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          handleSearchToggle={handleSearchToggle}
-        />
+        </div>
       </div>
     </div>
   );

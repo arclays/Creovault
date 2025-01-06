@@ -11,7 +11,7 @@ const NavLinks = ({ closeMenu }) => {
       <Link
         to="/movies"
         className={`hover:text-rose-600 ${
-          isActive("/movies") ? "font-bold text-red-600" : ""
+          isActive("/movies") ? "font-bold text-red-600 hover:text-red-600" : ""
         }`}
         onClick={closeMenu} // Close menu when clicked
       >
@@ -20,7 +20,7 @@ const NavLinks = ({ closeMenu }) => {
       <Link
         to="/books"
         className={`hover:text-rose-600 ${
-          isActive("/books") ? "font-bold text-red-600" : ""
+          isActive("/books") ? "font-bold text-red-600 hover:text-red-600" : ""
         }`}
         onClick={closeMenu} // Close menu when clicked
       >
@@ -29,7 +29,9 @@ const NavLinks = ({ closeMenu }) => {
       <Link
         to="/software"
         className={`hover:text-rose-600 ${
-          isActive("/software") ? "font-bold text-red-600" : ""
+          isActive("/software")
+            ? "font-bold text-red-600 hover:text-red-600"
+            : ""
         }`}
         onClick={closeMenu} // Close menu when clicked
       >
