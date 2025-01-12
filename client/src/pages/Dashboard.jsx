@@ -4,7 +4,170 @@ import img_books from "../assets/books_online.jpeg";
 import img_software from "../assets/online_software.jpeg";
 import { FiArrowUpRight } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
-import TrendMoviesCaurosal from "../components/cards/TrendMoviesCaurosal";
+import Slider from "../components/cards/Slider";
+import Footer from "../components/Footer";
+
+const movieData = {
+  title: "Trending Movies",
+  movies: [
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1660130643232-a85efb07d60b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1657299142014-34b66b73e68e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1660092626872-bdc79892b910?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1657299156147-13f929a63ce4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1657299142014-34b66b73e68e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1660130643232-a85efb07d60b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1660092626872-bdc79892b910?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1657299156147-13f929a63ce4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+  ],
+};
+
+const NewsData = {
+  title: "Trending Books",
+  movies: [
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1660130643232-a85efb07d60b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1657299142014-34b66b73e68e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1660092626872-bdc79892b910?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1657299156147-13f929a63ce4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1657299142014-34b66b73e68e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1660130643232-a85efb07d60b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1660092626872-bdc79892b910?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1657299156147-13f929a63ce4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+  ],
+};
+
+const SoftwareData = {
+  title: "Treasure These",
+  movies: [
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1660130643232-a85efb07d60b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1657299142014-34b66b73e68e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1660092626872-bdc79892b910?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1657299156147-13f929a63ce4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1657299142014-34b66b73e68e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1660130643232-a85efb07d60b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1660092626872-bdc79892b910?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      title: "Coder man",
+      description:
+        "Time to navigate the world for more movies and more data for updates",
+      url: "https://images.unsplash.com/photo-1657299156147-13f929a63ce4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    },
+  ],
+};
 
 export default function Dashboard() {
   return (
@@ -14,7 +177,7 @@ export default function Dashboard() {
         className="bg-white h-screen bg-cover bg-center relative"
         style={{ backgroundImage: `url(${img})` }}
       >
-        <div className="absolute inset-0 bg-black opacity-60"></div>{" "}
+        <div className="absolute inset-0 bg-black opacity-80"></div>{" "}
         {/* Lighter background for contrast */}
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6 md:px-0">
@@ -36,7 +199,7 @@ export default function Dashboard() {
             {/* Login Button */}
             <a
               href="#login"
-              className="border text-white py-3 px-6 rounded-full text-lg font-semibold hover:bg-blue-500 hover:border-blue-500 transition duration-300 ease-in-out"
+              className="border text-white py-3 px-6 rounded-full text-lg font-semibold hover:text-black hover:bg-slate-200 hover:border-slate-200 transition duration-300 ease-in-out"
             >
               <FcGoogle className="inline-block mr-4 size-8" />
               Continue with Google
@@ -106,34 +269,12 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <TrendMoviesCaurosal />
+      <Slider info={movieData.movies} title={movieData.title} />
+      <Slider info={NewsData.movies} title={NewsData.title} />
+      <Slider info={SoftwareData.movies} title={SoftwareData.title} />
 
       {/* Footer Section */}
-      <footer className="bg-neutral-900 text-white py-10">
-        <div className="text-center">
-          <p className="mb-4">&copy; 2025 YourSite. All rights reserved.</p>
-          <div className="flex justify-center gap-6">
-            <a
-              href="#privacy"
-              className="text-gray-400 hover:text-white transition duration-300"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#terms"
-              className="text-gray-400 hover:text-white transition duration-300"
-            >
-              Terms of Service
-            </a>
-            <a
-              href="#contact"
-              className="text-gray-400 hover:text-white transition duration-300"
-            >
-              Contact Us
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
