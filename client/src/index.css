@@ -3,3 +3,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hide the scrollbar while maintaining scroll functionality */
+body {
+  overflow-y: scroll; /* Ensures the layout doesn't shift when hiding the scrollbar */
+}
+
+::-webkit-scrollbar {
+  display: none; /* Hides scrollbar in browsers like Chrome, Edge, Safari */
+}
