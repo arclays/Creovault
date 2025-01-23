@@ -47,6 +47,7 @@ export const MovieHomeCaurosal = () => {
             />
           ))}
         </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-60"></div>
 
         {/* Controls */}
         <div className="absolute inset-0 flex justify-between items-center px-4">

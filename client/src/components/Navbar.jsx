@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CiMenuFries, CiMenuBurger } from "react-icons/ci";
 import SearchBar from "./Searchbar";
 import NavLinks from "./NavLinks";
+import Slider from "../components/cards/MoviesSlider";
 
 export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
