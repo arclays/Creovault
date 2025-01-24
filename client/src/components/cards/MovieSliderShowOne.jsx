@@ -8,7 +8,7 @@ const CustomPrevArrow = ({ onClick }) => (
   <button
     onClick={onClick}
     className="absolute right-7 z-10 opacity-60 text-white hover:text-red-700"
-    style={{ top: "-18%", transform: "translateY(-50%)" }}
+    style={{ top: "-10%", transform: "translateY(-50%)" }}
     aria-label="Previous Slide"
   >
     <FaChevronLeft className="text-lg" />
@@ -19,23 +19,22 @@ const CustomNextArrow = ({ onClick }) => (
   <button
     onClick={onClick}
     className="absolute right-0 z-10 pl-1 border-l-2 opacity-60 text-white border-l-neutral-700 hover:text-red-700"
-    style={{ top: "-18%", transform: "translateY(-50%)" }}
+    style={{ top: "-10%", transform: "translateY(-50%)" }}
     aria-label="Next Slide"
   >
     <FaChevronRight className="text-lg" />
   </button>
 );
 
-const MovieSlider = ({ title, data }) => {
+const MovieSliderShowOne = ({ title, data }) => {
   const settings = {
     dots: false,
     infinite: true,
-    centerMode: true,
-    centerPadding: "60px",
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
+    rows: 2,
     speed: 600,
     arrows: true, // Enable arrows
     prevArrow: <CustomPrevArrow />, // Pass custom previous arrow
@@ -66,19 +65,19 @@ const MovieSlider = ({ title, data }) => {
   };
 
   return (
-    <div className="container mx-auto my-16 px-5 md:px-20">
-      <h2 className="text-2xl font-bold text-amber-700 mb-8 border-b-2 pb-3 border-neutral-700">
+    <div className="">
+      <h2 className="font-bold mb-8 border-b-2 pb-3 text-amber-700 border-neutral-700">
         {title}
       </h2>
-      <div className="relative">
+      <div className="relative w-72 h-full">
         <Slider {...settings}>
           {data.map((item, index) => (
             <div
               key={index}
-              className="relative rounded-lg overflow-hidden shadow-md group transform m-2 transition-transform duration-500 hover:scale-105"
+              className="relative overflow-hidden shadow-md group transform m-2 transition-transform duration-500 hover:scale-105"
             >
               {/* Card Image */}
-              <div className="relative w-full m-2 h-72">
+              <div className="relative w-full h-72">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -110,4 +109,4 @@ const MovieSlider = ({ title, data }) => {
   );
 };
 
-export default MovieSlider;
+export default MovieSliderShowOne;

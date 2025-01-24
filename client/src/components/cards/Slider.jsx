@@ -64,7 +64,7 @@ const Slider = ({ title, info, link }) => {
         {/* Slider Content */}
         <button
           onClick={handlePrevClick}
-          className="absolute left-2 z-50 p-4 bg-opacity-50 text-red-600 text-7xl hover:text-red-800 transition"
+          className="absolute left-2 z-40 p-4 bg-opacity-50 text-red-600 text-7xl hover:text-red-800 transition"
         >
           &#8249;
         </button>

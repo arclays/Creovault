@@ -15,7 +15,7 @@ export default function SearchBar({
     <form className="relative">
       <input
         type="text"
-        className="outline-none font-semibold text-lg p-3 text-gray-300 bg-neutral-800 rounded pr-5 md:pr-10 border-2 border-neutral-800 focus:opacity-60 focus:border-red-600"
+        className="outline-none font-semibold text-lg p-3 text-gray-300 bg-neutral-700 rounded pr-5 md:pr-10 border-2 border-neutral-700 focus:opacity-60 focus:border-red-600"
         placeholder="Search favorites"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
