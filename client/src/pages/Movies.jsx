@@ -125,7 +125,7 @@ export default function Movies() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row container mx-auto px-5 md:px-20 justify-evenly py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 container mx-auto px-5 md:px-20 gap-7 py-10">
           <MovieSliderShowOne title="Upcoming Shows" data={showOne} />
           <MovieSliderShowOne title="Top movies" data={showOne} />
           <MovieSliderShowOne title="Top Series" data={showOne} />

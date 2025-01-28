@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import { IoMdPlayCircle } from "react-icons/io";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 
 // Custom Arrow Components
 const CustomPrevArrow = ({ onClick }) => (
@@ -27,11 +28,12 @@ const CustomNextArrow = ({ onClick }) => (
 );
 
 const MovieSlider = ({ title, data }) => {
+  const navigate = useNavigate(); // For navigation
   const settings = {
     dots: false,
     infinite: true,
-    centerMode: true,
-    centerPadding: "60px",
+    // centerMode: true,
+    // centerPadding: "60px",
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
@@ -78,7 +80,10 @@ const MovieSlider = ({ title, data }) => {
               className="relative rounded-lg overflow-hidden shadow-md group transform m-2 transition-transform duration-500 hover:scale-105"
             >
               {/* Card Image */}
-              <div className="relative w-full m-2 h-72">
+              <div
+                className="relative w-full m-2 h-72 cursor-pointer"
+                // style={{ zIndex: 1 }}
+              >
                 <img
                   src={item.image}
                   alt={item.title}
@@ -87,7 +92,10 @@ const MovieSlider = ({ title, data }) => {
               </div>
 
               {/* Overlay with Details */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent flex flex-col justify-end p-4">
+              <div
+                className="absolute inset-0 bg-gradient-to-t from-black to-transparent flex flex-col justify-end p-4 cursor-pointer"
+                onClick={() => navigate(`/movie_details`)}
+              >
                 <h3 className="text-white text-2xl font-semibold">
                   {item.title}
                 </h3>
@@ -96,12 +104,12 @@ const MovieSlider = ({ title, data }) => {
               </div>
 
               {/* Play Button */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <IoMdPlayCircle
                   className="w-16 h-16 text-white cursor-pointer hover:text-red-500 transition-all"
                   style={{ fontSize: "4rem" }}
                 />
-              </div>
+              </div> */}
             </div>
           ))}
         </Slider>
