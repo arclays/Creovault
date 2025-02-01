@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import Footer from "../components/Footer";
-import { MovieHomeCaurosal } from "../components/cards/MovieHomeCaurosal";
-import { SubHeader } from "../components/cards/SubHeader";
-import img from "../assets/joker1.jpg"; // Image path for testing
-import MovieSlider from "../components/cards/MoviesSlider"; // Import the CustomSlider
+import Footer from "../../components/Footer";
+import { MovieHomeCaurosal } from "../../components/cards/movies/MovieHomeCaurosal";
+import { SubHeader } from "../../components/cards/SubHeader";
+import img from "../../assets/joker1.jpg"; // Image path for testing
+import MovieSlider from "../../components/cards/movies/MoviesSlider"; // Import the CustomSlider
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import MovieSliderShowOne from "../components/cards/MovieSliderShowOne";
+import MovieSliderShowOne from "../../components/cards/movies/MovieSliderShowOne";
 
 export default function Movies() {
   const cardData = [

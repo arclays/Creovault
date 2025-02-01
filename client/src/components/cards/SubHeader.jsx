@@ -28,10 +28,16 @@ export const SubHeader = () => {
 
   return (
     <div className="flex justify-center md:justify-end gap-6 bg-neutral-900 py-7 pr-4 md:pr-16">
-      <Link to="" className="text-red-700 font-bold hover:text-red-900">
+      <Link
+        to="/browse_movie"
+        className="text-red-700 font-bold hover:text-red-900"
+      >
         Movies
       </Link>
-      <Link to="" className="text-red-700 font-bold hover:text-red-900">
+      <Link
+        to="/browse_series"
+        className="text-red-700 font-bold hover:text-red-900"
+      >
         Series
       </Link>
       <div className="relative">

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import img from "../../assets/books_online.jpeg";
+import img from "../../../assets/books_online.jpeg";
 import { TbArrowBadgeLeft, TbArrowBadgeRight } from "react-icons/tb";
 
 export const MovieHomeCaurosal = () => {
