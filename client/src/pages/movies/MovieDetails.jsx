@@ -1,6 +1,5 @@
 import React from "react";
 import Footer from "../../components/Footer";
-import { SubHeader } from "../../components/cards/SubHeader";
 import {
   FaStar,
   FaCalendarAlt,
@@ -13,10 +12,6 @@ import {
 export default function MovieDetails() {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-neutral-800 to-neutral-900 text-white">
-      {/* SubHeader Section */}
-      <SubHeader title="Movie Details" />
-
-      {/* Hero Section */}
       <section
         className="relative h-auto md:h-96 flex items-end justify-start p-4 md:p-8 bg-cover bg-center"
         style={{

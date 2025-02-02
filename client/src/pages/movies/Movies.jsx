@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Footer from "../../components/Footer";
 import { MovieHomeCaurosal } from "../../components/cards/movies/MovieHomeCaurosal";
-import { SubHeader } from "../../components/cards/SubHeader";
 import img from "../../assets/joker1.jpg"; // Image path for testing
 import MovieSlider from "../../components/cards/movies/MoviesSlider"; // Import the CustomSlider
 import "slick-carousel/slick/slick.css";
@@ -93,9 +92,6 @@ export default function Movies() {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b bg-neutral-800">
       <main className="flex-grow">
-        <div className="relative">
-          <SubHeader />
-        </div>
         {/* Movie Carousel */}
         <MovieHomeCaurosal />
 

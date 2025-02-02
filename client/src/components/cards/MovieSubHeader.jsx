@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { MdRectangle } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
+import { useGenre } from "../../context/GenreContext";
 
 const genres = [
   "Documentary",
@@ -19,11 +20,17 @@ const genres = [
   "Adventure",
 ];
 
-export const SubHeader = () => {
+const MovieSubHeader = () => {
   const [showGenre, setShowGenre] = useState(false);
+  const { setSelectedGenre } = useGenre();
 
   const handleGenreToggle = () => {
     setShowGenre(!showGenre);
+  };
+
+  const handleGenreSelect = (genre) => {
+    setSelectedGenre(genre);
+    setShowGenre(false); // Close the dropdown
   };
 
   return (
@@ -54,13 +61,13 @@ export const SubHeader = () => {
             <div className="bg-red-950 rounded-lg shadow-lg p-4 w-[90vw] max-w-[24rem]">
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {genres.map((genre, index) => (
-                  <a
+                  <button
                     key={index}
-                    href="#"
-                    className="block rounded bg-red-700 hover:bg-red-500 text-white text-sm px-3 py-2 text-center whitespace-nowrap"
+                    onClick={() => handleGenreSelect(genre)}
+                    className="block w-full rounded bg-red-700 hover:bg-red-500 text-white text-sm px-3 py-2 text-center whitespace-nowrap"
                   >
                     {genre}
-                  </a>
+                  </button>
                 ))}
               </div>
             </div>
@@ -70,3 +77,5 @@ export const SubHeader = () => {
     </div>
   );
 };
+
+export default MovieSubHeader;

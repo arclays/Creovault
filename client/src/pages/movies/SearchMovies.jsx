@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Fragment } from "react";
-import { SubHeader } from "../../components/cards/SubHeader";
 import Footer from "../../components/Footer";
 import { useSearch } from "../../context/SearchContext";
+import { useGenre } from "../../context/GenreContext";
 
 // Sample movie data (Replace with API)
 const movies = [
@@ -26,37 +26,57 @@ const movies = [
     genre: "Sci-Fi",
     rating: 8.6,
   },
+  {
+    id: 4,
+    title: "Titanic",
+    image: "https://via.placeholder.com/200",
+    genre: "Romance",
+    rating: 7.9,
+  },
+  {
+    id: 5,
+    title: "Parasite",
+    image: "https://via.placeholder.com/200",
+    genre: "Thriller",
+    rating: 8.6,
+  },
 ];
 
 export const SearchMovies = () => {
-  const { searchQuery } = useSearch();
-  const [filteredMovies, setFilteredMovies] = useState([]);
+  const { searchQuery, setSearchQuery } = useSearch();
+  const { selectedGenre, setSelectedGenre } = useGenre();
+  const [filteredMovies, setFilteredMovies] = useState(movies);
 
   useEffect(() => {
-    if (!searchQuery) {
-      setFilteredMovies([]);
-      return;
+    let filtered = movies;
+
+    // Search works independently
+    if (searchQuery) {
+      filtered = movies.filter((movie) =>
+        movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSelectedGenre(""); // Clear genre filter when searching
+    }
+    // Genre filter works independently
+    else if (selectedGenre) {
+      filtered = movies.filter((movie) => movie.genre === selectedGenre);
+      setSearchQuery(""); // Clear search filter when selecting a genre
     }
 
-    setFilteredMovies(
-      movies.filter((movie) =>
-        movie.title.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    );
-  }, [searchQuery]);
+    setFilteredMovies(filtered);
+  }, [searchQuery, selectedGenre]);
 
   return (
     <Fragment>
       <main className="flex flex-col min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
-        <div className="relative">
-          <SubHeader />
-        </div>
-
         {/* Search Results */}
         <div className="px-6 py-10">
           <h2 className="text-2xl font-semibold text-red-500 mb-4">
-            Search Results for:{" "}
-            <span className="text-white">{searchQuery}</span>
+            {searchQuery
+              ? `Search Results for: "${searchQuery}"`
+              : selectedGenre
+              ? `Showing ${selectedGenre} Movies`
+              : "All Movies"}
           </h2>
 
           {filteredMovies.length > 0 ? (

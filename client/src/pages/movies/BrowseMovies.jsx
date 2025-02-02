@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { SubHeader } from "../../components/cards/SubHeader";
 import Footer from "../../components/Footer";
 
 const movies = [
@@ -41,10 +40,6 @@ export const BrowseMovies = () => {
   return (
     <Fragment className="flex flex-col min-h-screen bg-gradient-to-b bg-neutral-800">
       <main className="flex-grow">
-        <div className="relative">
-          <SubHeader />
-        </div>
-
         <div className="min-h-screen bg-gray-900 text-white p-6">
           {/* Header */}
           <h1 className="text-3xl font-bold mb-6 text-center">Browse Movies</h1>
