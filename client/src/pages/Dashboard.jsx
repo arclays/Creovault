@@ -116,7 +116,7 @@ const NewsData = {
 };
 
 const SoftwareData = {
-  title: "Handy Softwares",
+  title: "Popular Softwares",
   movies: [
     {
       title: "Coder man",
