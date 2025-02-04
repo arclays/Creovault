@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FaDownload,
   FaRocket,
@@ -7,13 +8,21 @@ import {
   FaGamepad,
   FaMobileAlt,
 } from "react-icons/fa";
+import {
+  IoIosArrowDroprightCircle,
+  IoIosArrowDropleftCircle,
+} from "react-icons/io";
 import { motion } from "framer-motion";
-import { FaChevronDown } from "react-icons/fa";
+import { SoftwareSearch } from "../../components/cards/software/SoftwareSearch";
 
 export default function Software() {
   const [releaseCount, setReleaseCount] = useState(100);
   const [downloadCount, setDownloadCount] = useState(5000);
   const [activeTab, setActiveTab] = useState("Latest");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 20;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,25 +46,57 @@ export default function Software() {
       "Software A",
       "Software B",
       "Software C",
-      "Software C",
-      "Software A",
-      "Software B",
-      "Software C",
-      "Software C",
-      "Software B",
-      "Software C",
-      "Software C",
-      "Software A",
-      "Software B",
-      "Software C",
-      "Software C",
+      "Software D",
+      "Software E",
+      "Software F",
+      "Software G",
+      "Software H",
+      "Software I",
+      "Software J",
+      "Software K",
+      "Software L",
+      "Software M",
+      "Software N",
+      "Software O",
+      "Software H",
+      "Software I",
+      "Software J",
+      "Software K",
+      "Software L",
+      "Software M",
+      "Software N",
+      "Software O",
+      "Software H",
+      "Software I",
+      "Software J",
+      "Software K",
+      "Software L",
+      "Software M",
+      "Software N",
+      "Software O",
     ],
-    Popular: ["Software D", "Software E", "Software F"],
-    Dev: ["Software G", "Software H", "Software I"],
-    Utilities: ["Software J", "Software K", "Software L"],
-    Games: ["Software M", "Software N", "Software O"],
-    Mobile: ["Software P", "Software Q", "Software R"],
+    Popular: [
+      "Software P",
+      "Software Q",
+      "Software R",
+      "Software P",
+      "Software Q",
+      "Software R",
+      "Software P",
+      "Software Q",
+      "Software R",
+    ],
+    Dev: ["Software S", "Software T", "Software U"],
+    Utilities: ["Software V", "Software W", "Software X"],
+    Games: ["Software Y", "Software Z", "Software AA"],
+    Mobile: ["Software BB", "Software CC", "Software DD"],
   };
+
+  const currentSoftware = softwareList[activeTab].slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+  const totalPages = Math.ceil(softwareList[activeTab].length / itemsPerPage);
 
   return (
     <div className="min-h-screen bg-neutral-900 text-white flex flex-col items-center justify-center p-6">
@@ -68,25 +109,21 @@ export default function Software() {
         >
           Welcome to Our Software Hub
         </motion.h1>
+        <SoftwareSearch />
         <p className="text-gray-300 mb-6 text-lg">
-          Explore the latest, most popular software releases. Download for
-          Windows, Mac, Linux, or Mobile.
+          Explore the latest, most popular software releases.
         </p>
-        <div className="flex justify-center space-x-4 mb-6 relative">
-          <select className="bg-neutral-700 text-white px-4 py-2 rounded cursor-pointer">
-            <option>Windows</option>
-            <option>Mac</option>
-            <option>Linux</option>
-            <option>Mobile</option>
-          </select>
-        </div>
-        {/* Tabs for Categories */}
-        <div className="flex flex-wrap justify-center gap-4 border-b border-neutral-700 pb-4 mb-6">
+
+        {/* Category Tabs */}
+        <div className="flex flex-wrap justify-center gap-4 pb-4 mb-6 border-b border-neutral-700">
           {categories.map((category) => (
             <button
               key={category.name}
-              onClick={() => setActiveTab(category.name)}
-              className={`px-6 py-2 rounded-lg text-lg flex items-center space-x-2 flex-1 min-w-[45%] sm:min-w-0 ${
+              onClick={() => {
+                setActiveTab(category.name);
+                setCurrentPage(1);
+              }}
+              className={`px-6 py-2 rounded-lg text-lg flex items-center space-x-2 ${
                 activeTab === category.name
                   ? "bg-blue-600"
                   : "bg-neutral-700 hover:bg-neutral-600"
@@ -97,41 +134,50 @@ export default function Software() {
             </button>
           ))}
         </div>
-        {/* Display selected category with software list */}
+
+        {/* Software List with Pagination */}
         <div className="p-6 bg-neutral-700 rounded-xl shadow-md w-full max-w-4xl mx-auto">
           <h2 className="text-2xl font-semibold mb-2">{activeTab} Software</h2>
           <ul className="text-gray-300 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {softwareList[activeTab].map((software, index) => (
+            {currentSoftware.map((software, index) => (
               <li
                 key={index}
-                className="p-4 bg-neutral-800 rounded-md flex flex-col items-center"
+                className="p-4 bg-neutral-800 rounded-md flex flex-col items-center cursor-pointer"
+                onClick={() => navigate("/software_details")}
               >
-                <FaDownload className="text-5xl mb-2" />{" "}
-                {/* Increased icon size */}
+                <FaDownload className="text-5xl mb-2" />
                 <span className="mb-2 font-semibold text-center">
                   {software}
                 </span>
-                <button className="bg-blue-600 px-4 py-2 rounded-lg text-white hover:bg-blue-500 flex items-center">
-                  <FaDownload className="mr-2" /> Download
+                <button
+                  className="bg-blue-600 px-4 py-2 rounded-lg text-white hover:bg-blue-500"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  Download
                 </button>
               </li>
             ))}
           </ul>
-        </div>
-        {/* Counters */}
-        <div className="flex flex-wrap justify-around text-lg font-semibold mt-6 w-full max-w-4xl mx-auto">
-          <div className="bg-neutral-700 p-6 rounded-lg flex flex-col items-center w-full sm:w-1/2 md:w-1/4 mb-4">
-            {" "}
-            {/* Adjusted width and margin */}
-            <span className="text-2xl">{releaseCount}</span>
-            <p className="text-sm">New Releases</p>
-          </div>
-          <div className="bg-neutral-700 p-6 rounded-lg flex flex-col items-center w-full sm:w-1/2 md:w-1/4 mb-4">
-            {" "}
-            {/* Adjusted width and margin */}
-            <span className="text-2xl">{downloadCount}</span>
-            <p className="text-sm">Downloads</p>
-          </div>
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center mt-4 space-x-2">
+              <IoIosArrowDropleftCircle
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className="cursor-pointer text-4xl text-neutral-600 hover:text-neutral-200"
+              />
+              <span className="px-4 py-2 font-extrabold rounded-lg">
+                {currentPage} of {totalPages}
+              </span>
+              <IoIosArrowDroprightCircle
+                onClick={() =>
+                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                }
+                disabled={currentPage === totalPages}
+                className="cursor-pointer text-4xl text-neutral-600 hover:text-neutral-200"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

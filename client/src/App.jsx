@@ -3,6 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import Movies from "./pages/movies/Movies";
 import Books from "./pages/books/Books";
 import Software from "./pages/software/Software";
+import SoftwareDetails from "./pages/software/SoftwareDetails";
 import MovieDetails from "./pages/movies/MovieDetails";
 import { BrowseMovies } from "./pages/movies/BrowseMovies";
 import { BrowseSeries } from "./pages/movies/BrowseSeries";
@@ -81,6 +82,14 @@ export default function App() {
               element={
                 <SoftwareLayout>
                   <Software />
+                </SoftwareLayout>
+              }
+            />
+            <Route
+              path="/software_details"
+              element={
+                <SoftwareLayout>
+                  <SoftwareDetails />
                 </SoftwareLayout>
               }
             />
