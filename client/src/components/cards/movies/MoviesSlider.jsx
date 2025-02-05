@@ -69,7 +69,7 @@ const MovieSlider = ({ title, data }) => {
 
   return (
     <div className="container mx-auto my-16 px-5 md:px-20">
-      <h2 className="text-2xl font-bold text-amber-700 mb-8 border-b-2 pb-3 border-neutral-700">
+      <h2 className="text-2xl font-bold text-red-800 capitalize mb-8 border-b-2 pb-3 border-neutral-700">
         {title}
       </h2>
       <div className="relative">

@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
 import Movies from "./pages/movies/Movies";
 import Books from "./pages/books/Books";
 import Software from "./pages/software/Software";
@@ -25,7 +25,7 @@ export default function App() {
               path="/"
               element={
                 <MainLayout>
-                  <Dashboard />
+                  <Home />
                 </MainLayout>
               }
             />

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { MdRectangle } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useGenre } from "../../context/GenreContext";
 
 const genres = [
@@ -22,15 +22,33 @@ const genres = [
 
 const MovieSubHeader = () => {
   const [showGenre, setShowGenre] = useState(false);
+  const [timer, setTimer] = useState(null);
   const { setSelectedGenre } = useGenre();
+  const dropdownRef = useRef(null);
 
-  const handleGenreToggle = () => {
-    setShowGenre(!showGenre);
+  // Open genre dropdown
+  const handleMouseEnter = () => {
+    if (timer) clearTimeout(timer);
+    setShowGenre(true);
   };
 
+  // Close genre dropdown with delay
+  const handleMouseLeave = () => {
+    const newTimer = setTimeout(() => {
+      setShowGenre(false);
+    }, 200);
+    setTimer(newTimer);
+  };
+
+  // Mobile touch events for opening/closing dropdown
+  const handleTouchStart = () => {
+    setShowGenre((prev) => !prev); // Toggle on touch
+  };
+
+  // Select genre & close dropdown immediately
   const handleGenreSelect = (genre) => {
     setSelectedGenre(genre);
-    setShowGenre(false); // Close the dropdown
+    setShowGenre(false);
   };
 
   return (
@@ -47,18 +65,35 @@ const MovieSubHeader = () => {
       >
         Series
       </Link>
-      <div className="relative">
-        <div
-          className="text-red-700 font-bold hover:text-red-900 cursor-pointer"
-          onClick={handleGenreToggle}
-        >
+
+      {/* Genre Dropdown */}
+      <div
+        className="relative"
+        ref={dropdownRef}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouchStart} // Handle mobile touch
+      >
+        <div className="text-red-700 font-bold hover:text-red-900 cursor-pointer flex items-center gap-1">
           Genre
-          <IoIosArrowDown className="inline-block ml-1 size-3" />
+          <IoIosArrowDown
+            className={`size-3 transition-transform ${
+              showGenre ? "rotate-180" : ""
+            }`}
+          />
         </div>
+
         {showGenre && (
-          <div className="absolute top-10 -right-14 sm:right-5 z-20">
-            <MdRectangle className="absolute text-2xl rotate-45 text-red-950 -top-2 right-16 sm:right-4" />
-            <div className="bg-red-950 rounded-lg shadow-lg p-4 w-[90vw] max-w-[24rem]">
+          <div className="absolute top-10 -right-20 sm:right-0 z-20">
+            {/* Dropdown Pointer */}
+            <MdRectangle className="absolute text-2xl rotate-45 text-red-950 -top-2 right-24 sm:right-4" />
+            {/* Genre List */}
+            <div
+              className="bg-red-950 rounded-lg shadow-lg p-4 w-[90vw] max-w-[24rem] overflow-auto" // Make the dropdown scrollable if needed
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onTouchStart={handleTouchStart} // Mobile touch interaction
+            >
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {genres.map((genre, index) => (
                   <button

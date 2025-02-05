@@ -61,60 +61,6 @@ const movieData = {
   ],
 };
 
-const NewsData = {
-  title: "Trending Books",
-  movies: [
-    {
-      title: "Coder man",
-      description:
-        "Time to navigate the world for more movies and more data for updates",
-      url: "https://images.unsplash.com/photo-1660130643232-a85efb07d60b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
-    },
-    {
-      title: "Coder man",
-      description:
-        "Time to navigate the world for more movies and more data for updates",
-      url: "https://images.unsplash.com/photo-1657299142014-34b66b73e68e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
-    },
-    {
-      title: "Coder man",
-      description:
-        "Time to navigate the world for more movies and more data for updates",
-      url: "https://images.unsplash.com/photo-1660092626872-bdc79892b910?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
-    },
-    {
-      title: "Coder man",
-      description:
-        "Time to navigate the world for more movies and more data for updates",
-      url: "https://images.unsplash.com/photo-1657299156147-13f929a63ce4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
-    },
-    {
-      title: "Coder man",
-      description:
-        "Time to navigate the world for more movies and more data for updates",
-      url: "https://images.unsplash.com/photo-1657299142014-34b66b73e68e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
-    },
-    {
-      title: "Coder man",
-      description:
-        "Time to navigate the world for more movies and more data for updates",
-      url: "https://images.unsplash.com/photo-1660130643232-a85efb07d60b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
-    },
-    {
-      title: "Coder man",
-      description:
-        "Time to navigate the world for more movies and more data for updates",
-      url: "https://images.unsplash.com/photo-1660092626872-bdc79892b910?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
-    },
-    {
-      title: "Coder man",
-      description:
-        "Time to navigate the world for more movies and more data for updates",
-      url: "https://images.unsplash.com/photo-1657299156147-13f929a63ce4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
-    },
-  ],
-};
-
 const SoftwareData = {
   title: "Popular Softwares",
   movies: [
@@ -169,7 +115,7 @@ const SoftwareData = {
   ],
 };
 
-export default function Dashboard() {
+export default function Home() {
   return (
     <div className="">
       {/* Hero Section with Background Image */}
@@ -182,7 +128,7 @@ export default function Dashboard() {
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6 md:px-0">
           <h1 className="text-5xl font-bold mb-4 animate__animated animate__fadeIn animate__delay-1s">
-            Discover the World of Movies, Books, and Software
+            Discover the World of Movies and Software
           </h1>
           <p className="text-xl mb-6 animate__animated animate__fadeIn animate__delay-2s">
             Explore amazing content, build your library, and enhance your
@@ -208,73 +154,62 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Movie, Book, and Software Sections */}
+      {/* Movie and Software Sections */}
       <div id="explore" className="py-20 px-8 bg-neutral-800">
         <h2 className="text-4xl font-bold text-center mb-12">
           Explore Our Collections
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 h-full gap-8">
           {/* Movie Section */}
-          <div
-            className="bg-cover bg-center rounded-lg overflow-hidden hover:scale-105 transition duration-300 ease-in-out"
-            style={{ backgroundImage: `url(${img_movies})` }}
-          >
-            <div className="p-6 bg-black bg-opacity-50 rounded-lg">
-              <h3 className="text-2xl font-semibold text-white mb-2">Movies</h3>
-              <p className="text-gray-200">
-                Discover a wide range of blockbuster movies, classics, and
-                exclusive releases for movie lovers.
+          <div className="relative group rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:scale-[1.02]">
+            <div
+              className="absolute inset-0 bg-cover bg-center brightness-75 group-hover:brightness-50 transition-all duration-300"
+              style={{ backgroundImage: `url(${img_movies})` }}
+            />
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm group-hover:bg-black/60 transition-all duration-300" />
+            <div className="relative z-10 p-8 text-white">
+              <h3 className="text-3xl font-extrabold mb-4">🎬 Movies</h3>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Explore a vast library of blockbusters, classics, and exclusive
+                releases.
               </p>
-              <a href="#movies" className="text-red-600 mt-4 block font-bold">
+              <a
+                href="#movies"
+                className="mt-6 inline-block px-6 py-3 text-lg font-semibold rounded-full bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 transition-all duration-300"
+              >
                 Watch Now &rarr;
               </a>
             </div>
           </div>
 
-          {/* Book Section */}
-          <div
-            className="bg-cover bg-center rounded-lg overflow-hidden hover:scale-105 transition duration-300 ease-in-out"
-            style={{ backgroundImage: `url(${img_books})` }}
-          >
-            <div className="p-6 bg-black bg-opacity-50 rounded-lg">
-              <h3 className="text-2xl font-semibold text-white mb-2">Books</h3>
-              <p className="text-gray-200">
-                Dive into an extensive collection of bestsellers, timeless
-                literature, and educational resources.
-              </p>
-              <a href="#books" className="text-red-600 mt-4 block font-bold">
-                Go Read &rarr;
-              </a>
-            </div>
-          </div>
-
           {/* Software Section */}
-          <div
-            className="bg-cover bg-center rounded-lg overflow-hidden hover:scale-105 transition duration-300 ease-in-out"
-            style={{ backgroundImage: `url(${img_software})` }}
-          >
-            <div className="p-6 bg-black bg-opacity-50 rounded-lg">
-              <h3 className="text-2xl font-semibold text-white mb-2">
-                Software
-              </h3>
-              <p className="text-gray-200">
-                Enhance your workflow with the best tools, productivity apps,
-                and software solutions available today.
+          <div className="relative group rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:scale-[1.02]">
+            <div
+              className="absolute inset-0 bg-cover bg-center brightness-75 group-hover:brightness-50 transition-all duration-300"
+              style={{ backgroundImage: `url(${img_software})` }}
+            />
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm group-hover:bg-black/60 transition-all duration-300" />
+            <div className="relative z-10 p-8 text-white">
+              <h3 className="text-3xl font-extrabold mb-4">🖥️ Software</h3>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Discover powerful tools, productivity apps, and software
+                solutions.
               </p>
-              <a href="#software" className="text-red-600 mt-4 block font-bold">
+              <a
+                href="#software"
+                className="mt-6 inline-block px-6 py-3 text-lg font-semibold rounded-full bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 transition-all duration-300"
+              >
                 Explore Software &rarr;
               </a>
             </div>
           </div>
         </div>
       </div>
-
       <Slider
         info={movieData.movies}
         title={movieData.title}
         link={"/movies"}
       />
-      <Slider info={NewsData.movies} title={NewsData.title} link={"/books"} />
       <Slider
         info={SoftwareData.movies}
         title={SoftwareData.title}

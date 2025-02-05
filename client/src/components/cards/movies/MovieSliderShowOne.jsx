@@ -39,14 +39,17 @@ const MovieSliderShowOne = ({ title, data }) => {
     rows: 2,
     speed: 600,
     arrows: true, // Enable arrows
-    prevArrow: <CustomPrevArrow />, // Pass custom previous arrow
-    nextArrow: <CustomNextArrow />, // Pass custom next arrow
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
+    centerMode: true, // Keep items centered
+    centerPadding: "0", // Ensure no padding by default
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          centerPadding: "0", // Remove padding here as well
         },
       },
       {
@@ -54,6 +57,7 @@ const MovieSliderShowOne = ({ title, data }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          centerPadding: "0", // Ensure no padding on smaller screens
         },
       },
       {
@@ -61,17 +65,20 @@ const MovieSliderShowOne = ({ title, data }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          centerPadding: "0", // Remove padding for small screens
         },
       },
     ],
   };
 
   return (
-    <div className="">
-      <h2 className="font-bold mb-8 border-b-2 pb-3 text-amber-700 border-neutral-700">
+    <div className="w-full mx-auto px-4 sm:px-5">
+      {" "}
+      {/* Ensure full width with some padding */}
+      <h2 className="font-bold mb-8 border-b-2 pb-3 text-red-800 capitalize border-neutral-700">
         {title}
       </h2>
-      <div className="relative w-72 h-full">
+      <div className="relative w-full h-full mx-auto">
         <Slider {...settings}>
           {data.map((item, index) => (
             <div
@@ -80,9 +87,8 @@ const MovieSliderShowOne = ({ title, data }) => {
             >
               {/* Card Image */}
               <div
-                className="relative w-full m-2 h-72 cursor-pointer"
+                className="relative w-full h-72 cursor-pointer"
                 onClick={() => navigate(`/movie_details`)}
-                // style={{ zIndex: 1 }}
               >
                 <img
                   src={item.image}
@@ -102,14 +108,6 @@ const MovieSliderShowOne = ({ title, data }) => {
                 <p className="text-sm text-gray-300">{item.duration}</p>
                 <p className="text-xs text-gray-400 mt-1">{item.description}</p>
               </div>
-
-              {/* Play Button */}
-              {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <IoMdPlayCircle
-                  className="w-16 h-16 text-white cursor-pointer hover:text-red-500 transition-all"
-                  style={{ fontSize: "4rem" }}
-                />
-              </div> */}
             </div>
           ))}
         </Slider>

@@ -35,7 +35,7 @@ const Slider = ({ title, info, link }) => {
   };
 
   return (
-    <div className="flex flex-col space-y-4 md:mx-14">
+    <div className="flex flex-col space-y-4 md:mx-14 my-10">
       <div className="flex justify-between items-center px-6 pt-10">
         <h3 className="text-2xl capitalize font-bold text-neutral-200">
           {title}

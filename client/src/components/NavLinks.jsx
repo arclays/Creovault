@@ -26,7 +26,7 @@ const NavLinks = ({ closeMenu }) => {
       >
         Movies
       </Link>
-      <Link
+      {/* <Link
         to="/books"
         className={`hover:text-rose-600 uppercase ${
           isActive("/books") ? "font-bold text-red-600 hover:text-red-600" : ""
@@ -34,7 +34,7 @@ const NavLinks = ({ closeMenu }) => {
         onClick={closeMenu} // Close menu when clicked
       >
         Books
-      </Link>
+      </Link> */}
       <Link
         to="/software"
         className={`hover:text-rose-600 uppercase ${

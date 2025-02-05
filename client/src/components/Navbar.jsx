@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CiMenuFries, CiMenuBurger } from "react-icons/ci";
+import logo from "../assets/creovault_logo.png";
 import SearchBar from "./Searchbar";
 import NavLinks from "./NavLinks";
 
@@ -50,7 +51,7 @@ export default function Navbar() {
       <div className="flex justify-between py-6 px-8 lg:px-20 bg-transparent items-center relative shadow ">
         {/* Logo */}
         <Link to="/" className="text-4xl text-rose-700 font-bold">
-          Logo
+          <img src={logo} alt="logo" className="backdrop-blur-lg" />
         </Link>
         {/* Menu Toggle for Small Screens */}
         <div className="md:hidden">
