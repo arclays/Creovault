@@ -9,8 +9,17 @@ const NavLinks = ({ closeMenu }) => {
   return (
     <>
       <Link
+        to="/"
+        className={`hover:text-rose-600 uppercase ${
+          isActive("/") ? "font-bold text-red-600 hover:text-red-600" : ""
+        }`}
+        onClick={closeMenu} // Close menu when clicked
+      >
+        Home
+      </Link>
+      <Link
         to="/movies"
-        className={`hover:text-rose-600 ${
+        className={`hover:text-rose-600 uppercase ${
           isActive("/movies") ? "font-bold text-red-600 hover:text-red-600" : ""
         }`}
         onClick={closeMenu} // Close menu when clicked
@@ -19,7 +28,7 @@ const NavLinks = ({ closeMenu }) => {
       </Link>
       <Link
         to="/books"
-        className={`hover:text-rose-600 ${
+        className={`hover:text-rose-600 uppercase ${
           isActive("/books") ? "font-bold text-red-600 hover:text-red-600" : ""
         }`}
         onClick={closeMenu} // Close menu when clicked
@@ -28,7 +37,7 @@ const NavLinks = ({ closeMenu }) => {
       </Link>
       <Link
         to="/software"
-        className={`hover:text-rose-600 ${
+        className={`hover:text-rose-600 uppercase ${
           isActive("/software")
             ? "font-bold text-red-600 hover:text-red-600"
             : ""

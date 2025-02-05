@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
+import { FaPlus } from "react-icons/fa";
 
-const Slider = ({ title, info }) => {
+const Slider = ({ title, info, link }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerScreen, setItemsPerScreen] = useState(4);
 
@@ -33,7 +35,7 @@ const Slider = ({ title, info }) => {
   };
 
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col space-y-4 md:mx-14">
       <div className="flex justify-between items-center px-6 pt-10">
         <h3 className="text-2xl capitalize font-bold text-neutral-200">
           {title}
@@ -48,9 +50,12 @@ const Slider = ({ title, info }) => {
             ></div>
           ))}
         </div> */}
-        <div className="gap-2 text-sm inline-block text-purple-500 font-bold hover:text-purple-400 cursor-pointer">
-          More <IoIosArrowForward className="inline-block ml-1" />
-        </div>
+        <Link
+          to={link}
+          className="gap-2 flex items-center text-xs text-white-500 font-bold hover:bg-red-600 hover:border-red-600 rounded cursor-pointer border p-2"
+        >
+          <FaPlus className="inline-block mr-1" /> <span>View More</span>
+        </Link>
       </div>
       <div className="flex justify-center items-center overflow-hidden relative">
         {/* Left Wall */}
@@ -59,7 +64,7 @@ const Slider = ({ title, info }) => {
         {/* Slider Content */}
         <button
           onClick={handlePrevClick}
-          className="absolute left-2 z-50 p-4 bg-gray-700 bg-opacity-50 text-white rounded-full hover:bg-gray-800 transition"
+          className="absolute left-2 z-40 p-4 bg-opacity-50 text-red-600 text-7xl hover:text-red-800 transition"
         >
           &#8249;
         </button>
@@ -83,7 +88,7 @@ const Slider = ({ title, info }) => {
                 <img
                   src={item.url}
                   alt={`Slide ${index}`}
-                  className="w-full h-64 object-cover rounded-lg shadow-md transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:opacity-20"
+                  className="w-full h-64 object-cover shadow-md transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:opacity-20"
                   style={{
                     zIndex: 1,
                     transition:
@@ -110,7 +115,7 @@ const Slider = ({ title, info }) => {
         {/* Right Button */}
         <button
           onClick={handleNextClick}
-          className="absolute right-2 z-10 p-4 bg-gray-700 bg-opacity-50 text-white rounded-full hover:bg-gray-800 transition"
+          className="absolute right-2 z-10 p-4  bg-opacity-50 text-red-600 hover:text-red-800 text-7xl transition"
         >
           &#8250;
         </button>

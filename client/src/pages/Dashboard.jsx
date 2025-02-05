@@ -116,7 +116,7 @@ const NewsData = {
 };
 
 const SoftwareData = {
-  title: "Treasure These",
+  title: "Popular Softwares",
   movies: [
     {
       title: "Coder man",
@@ -269,9 +269,17 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <Slider info={movieData.movies} title={movieData.title} />
-      <Slider info={NewsData.movies} title={NewsData.title} />
-      <Slider info={SoftwareData.movies} title={SoftwareData.title} />
+      <Slider
+        info={movieData.movies}
+        title={movieData.title}
+        link={"/movies"}
+      />
+      <Slider info={NewsData.movies} title={NewsData.title} link={"/books"} />
+      <Slider
+        info={SoftwareData.movies}
+        title={SoftwareData.title}
+        link={"/software"}
+      />
 
       {/* Footer Section */}
       <Footer />
